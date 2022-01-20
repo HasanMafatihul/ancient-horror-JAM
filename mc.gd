@@ -5,8 +5,17 @@ var path :PoolVector2Array
 var nav_2d : Navigation2D
 var target
 var line : Line2D
+onready var rayCast2D = $RayCast2D
 
 func _physics_process(delta):
+	
+	# Vision / Hearing
+	var collision_object = rayCast2D.get_collider()
+	print(collision_object)
+	# set up for next frame's collision
+	var direction_to_player = global_position.direction_to(target.global_position)
+	rayCast2D.cast_to = direction_to_player * 500
+	
 	path = nav_2d.get_simple_path(global_position, target.global_position)
 	line.points = path
 	
