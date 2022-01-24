@@ -11,7 +11,6 @@ func _physics_process(delta):
 	
 	# Vision / Hearing
 	var collision_object = rayCast2D.get_collider()
-	print(collision_object)
 	# set up for next frame's collision
 	var direction_to_player = global_position.direction_to(target.global_position)
 	rayCast2D.cast_to = direction_to_player * 500

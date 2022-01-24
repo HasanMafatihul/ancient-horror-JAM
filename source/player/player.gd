@@ -4,6 +4,9 @@ var speed = 500
 
 var velocity:Vector2
 
+#TEMP
+signal change_door
+
 # Input
 func get_input():
 	var movement = Vector2()
@@ -20,6 +23,10 @@ func get_input():
 # Move per physic process (see godot documentation)
 func _physics_process(delta):
 	velocity = get_input()
+	
+	# Open/close door
+	if Input.is_action_just_pressed("ui_accept"):
+		emit_signal("change_door")
 	
 	# Animation
 	
