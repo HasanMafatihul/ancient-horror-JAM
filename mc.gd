@@ -15,7 +15,7 @@ func _physics_process(delta):
 	var direction_to_player = global_position.direction_to(target.global_position)
 	rayCast2D.cast_to = direction_to_player * 500
 	
-	path = nav_2d.get_simple_path(global_position, target.global_position)
+	path = nav_2d.get_simple_path(global_position, target.global_position, false)
 	line.points = path
 	
 	#Move

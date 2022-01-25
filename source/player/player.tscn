@@ -23,3 +23,5 @@ current = true
 scale = Vector2( 3.3811, 3.3811 )
 texture = ExtResource( 3 )
 mode = 3
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
