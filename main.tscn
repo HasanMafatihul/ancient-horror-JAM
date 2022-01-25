@@ -130,12 +130,12 @@ vertices = PoolVector2Array( 157.717, 253.324, 264, 248, 264, 312, 85.3181, 313.
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ) ]
 outlines = [ PoolVector2Array( 87.563, 83.832, 157.156, 86.0769, 157.717, 253.324, 264, 248, 264, 312, 85.3181, 313.376 ) ]
 
-[sub_resource type="NavigationPolygon" id=9]
+[sub_resource type="NavigationPolygon" id=8]
 vertices = PoolVector2Array( 464, 248, 464, 312, 360, 312, 360, 248 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 464, 248, 464, 312, 360, 312, 360, 248 ) ]
 
-[sub_resource type="NavigationPolygon" id=8]
+[sub_resource type="NavigationPolygon" id=9]
 vertices = PoolVector2Array( 360, 312, 264, 312, 264, 248, 360, 248 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 360, 248, 264, 248, 264, 312, 360, 312 ) ]
@@ -155,10 +155,10 @@ tile_data = PoolIntArray( 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 196610, 0, 0,
 navpoly = SubResource( 7 )
 
 [node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
-navpoly = SubResource( 9 )
+navpoly = SubResource( 8 )
 
 [node name="nav_door" type="NavigationPolygonInstance" parent="Navigation2D"]
-navpoly = SubResource( 8 )
+navpoly = SubResource( 9 )
 enabled = false
 script = ExtResource( 7 )
 
