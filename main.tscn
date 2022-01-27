@@ -162,6 +162,10 @@ navpoly = SubResource( 9 )
 enabled = false
 script = ExtResource( 7 )
 
+[node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Navigation2D"]
+position = Vector2( 104, 0 )
+navpoly = SubResource( 9 )
+
 [node name="monster" type="Sprite" parent="."]
 position = Vector2( 121.016, 125.841 )
 scale = Vector2( 0.789173, 0.789173 )
@@ -175,7 +179,7 @@ cast_to = Vector2( 0, 100 )
 [node name="Line2D" type="Line2D" parent="."]
 
 [node name="door" parent="." instance=ExtResource( 6 )]
-position = Vector2( 303.858, 276.291 )
+position = Vector2( 312, 280 )
 
 [node name="collision" type="StaticBody2D" parent="."]
 
