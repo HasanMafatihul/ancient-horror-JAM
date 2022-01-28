@@ -20,6 +20,7 @@ shape = SubResource( 1 )
 current = true
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 scale = Vector2( 3.3811, 3.3811 )
 texture = ExtResource( 3 )
 mode = 3
