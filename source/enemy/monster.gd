@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-var speed = 100.0
-var path : PoolVector2Array
-var nav_2d : Navigation2D
-var target
-var line : Line2D
-onready var rayCast2D = $RayCast2D
+var speed = 100.0 # Monster's speed measured by pixel
+var path : PoolVector2Array # Pathing for monsters
+var nav_2d : Navigation2D # Navigation2D to ascertain path
+var target # Current target
+var line : Line2D # Visually showing path
+
+onready var rayCast2D = $RayCast2D # Monster's vision
 
 func _physics_process(delta):
 	
@@ -15,13 +16,17 @@ func _physics_process(delta):
 	var direction_to_player = global_position.direction_to(target.global_position)
 	rayCast2D.cast_to = direction_to_player * 500
 	
+# Getting path
+	# State machine
+	
+	# Chase target
 	path = nav_2d.get_simple_path(global_position, target.global_position, false)
 	line.points = path
 	
 	# Move
 	var move_distance = speed * delta
 	move_along_path(move_distance)
-	move_and_slide(Vector2(0.0, 0.0))
+	#move_and_slide(Vector2(0.0, 0.0))
 
 # Movement code following path
 func move_along_path(distance : float):
