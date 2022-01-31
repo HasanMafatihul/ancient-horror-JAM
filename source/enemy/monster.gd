@@ -5,10 +5,17 @@ var path : PoolVector2Array # Pathing for monsters
 var nav_2d : Navigation2D # Navigation2D to ascertain path
 var target # Current target
 var line : Line2D # Visually showing path
+var state : String = "Idle" # Monster's current state
+var rooms_parent : Node2D
+var rooms : Array
 
 onready var rayCast2D = $RayCast2D # Monster's vision
 
 func _physics_process(delta):
+	# Setting up rooms location
+	if rooms.size() == 0:
+		rooms = rooms_parent.rooms
+		print(rooms)
 	
 	# Vision / Hearing
 	var collision_object = rayCast2D.get_collider()
@@ -16,12 +23,31 @@ func _physics_process(delta):
 	var direction_to_player = global_position.direction_to(target.global_position)
 	rayCast2D.cast_to = direction_to_player * 500
 	
-# Getting path
 	# State machine
-	
-	# Chase target
-	path = nav_2d.get_simple_path(global_position, target.global_position, false)
-	line.points = path
+	if state == "Idle":
+		# Patrolling rooms
+		# Choose room to patrol (WIP) (DEPRECATED)
+		var patrol_dis = 1000
+		var patrol_pos = global_position
+		for i in rooms:
+			print(global_position.distance_to(i))
+			if global_position.distance_to(i) < patrol_dis and global_position.distance_to(i) > 50:
+				patrol_dis = global_position.distance_to(i)
+				patrol_pos = i
+		
+		# Set path
+		path = []
+		for i in range(rooms.size()):
+			if i == 0:
+				path.append_array(nav_2d.get_simple_path(global_position, rooms[i], false))
+			else:
+				path.append_array(nav_2d.get_simple_path(rooms[i-1], rooms[i], false))
+		line.points = path
+		state = "Patrol"
+	elif state == "Chase":
+		# Chase target
+		path = nav_2d.get_simple_path(global_position, target.global_position, false)
+		line.points = path
 	
 	# Move
 	var move_distance = speed * delta
