@@ -775,8 +775,8 @@ tile_data = PoolIntArray( 65537, 39, 0, 65538, 39, 0, 65539, 39, 0, 65540, 39, 0
 curve = SubResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Navigation2D/room_1"]
-position = Vector2( 775.119, 378.329 )
-rotation = 1.59315
+position = Vector2( 775.119, 378.328 )
+rotation = 1.5931
 offset = 30.0
 script = ExtResource( 54 )
 
@@ -786,7 +786,7 @@ script = ExtResource( 54 )
 position = Vector2( 517.241, 362.922 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 227.475, 508.284 )
+position = Vector2( 267.073, 457.372 )
 
 [node name="monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 265.453, 357.504 )

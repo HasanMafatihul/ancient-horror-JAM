@@ -3,6 +3,9 @@ extends KinematicBody2D
 export var speed : float = 100.0 # Monster's speed measured by pixel
 export var patrol_paths : Array
 
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var counter : float = 0
+
 var path : PoolVector2Array # Pathing for monsters
 var nav_2d : Navigation2D # Navigation2D to ascertain path
 var target # Current target
@@ -13,6 +16,9 @@ var path_fol : PathFollow2D
 
 onready var rayCast2D = $RayCast2D # Monster's vision
 onready var visionCone = $sprite/Light2D/Area2D
+
+func _ready():
+	rng.randomize()
 
 func _process(delta):
 	
@@ -48,9 +54,21 @@ func _physics_process(delta):
 	elif state == "Patrol":
 		path = nav_2d.get_simple_path(global_position, path_fol.global_position, true)
 	
+	elif state == "Search":
+		# Search player
+		counter -= delta
+		if counter <= 0:
+			$sprite.rotate(deg2rad(rng.randf_range(0, 180)))
+			counter = rng.randf_range(3.0, 5.0)
+			if counter > 4.5:
+				state = "Idle"
+	
 	elif state == "Chase":
 		# Chase target in last seen position
 		path = nav_2d.get_simple_path(global_position, chase_pos, true)
+		if global_position.distance_to(chase_pos) < 10:
+			state = "Search"
+			counter = rng.randf_range(0.5, 2.0)
 		
 	
 	line.points = path
