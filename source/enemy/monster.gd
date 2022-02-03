@@ -11,6 +11,7 @@ var state : String = "Idle" # Monster's current state
 var path_fol : PathFollow2D
 
 onready var rayCast2D = $RayCast2D # Monster's vision
+onready var visionCone = $sprite/Light2D/Area2D
 
 func _physics_process(delta):
 	
@@ -19,6 +20,7 @@ func _physics_process(delta):
 	# set up for next frame's collision
 	var direction_to_player = global_position.direction_to(target.global_position)
 	rayCast2D.cast_to = direction_to_player * 500
+	#print(visionCone.)
 	
 	# State machine
 	if state == "Idle":
@@ -31,15 +33,17 @@ func _physics_process(delta):
 				path_fol = temp
 		
 		# Change state
-		state = "Patrol"
-	elif state == "Patrol":
+		state = "Init_Patrol"
+	elif state == "Init_Patrol":
 		path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
-		line.points = path
+		if global_position.distance_to(path_fol.global_position) < 10:
+			state = "Patrol"
+	elif state == "Patrol":
+		path = nav_2d.get_simple_path(global_position, path_fol.global_position, true)
 	elif state == "Chase":
 		# Chase target
 		path = nav_2d.get_simple_path(global_position, target.global_position, false)
-		line.points = path
-	
+	line.points = path
 	# Move
 	var move_distance = speed * delta
 	move_along_path(move_distance)
@@ -58,3 +62,7 @@ func move_along_path(distance : float):
 		
 		start_point = path[0]
 		path.remove(0)
+
+
+func _on_Area2D_body_entered(body):
+	print(body)
