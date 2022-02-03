@@ -755,7 +755,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 766.27, 325.868, 0, 0, 0, 0, 766.27, 774.375, 0, 0, 0, 0, 273.714, 747.678, 0, 0, 0, 0, 259.031, 320.529, 0, 0, 0, 0, 766.27, 325.868 )
+"points": PoolVector2Array( 0, 0, 0, 0, 775.79, 348.318, 0, 0, 0, 0, 766.27, 774.375, 0, 0, 0, 0, 273.714, 747.678, 0, 0, 0, 0, 262.247, 360.805, 0, 0, 0, 0, 775.79, 348.318 )
 }
 
 [node name="main" type="Node2D"]
@@ -775,8 +775,8 @@ tile_data = PoolIntArray( 65537, 39, 0, 65538, 39, 0, 65539, 39, 0, 65540, 39, 0
 curve = SubResource( 4 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Navigation2D/room_1"]
-position = Vector2( 766.27, 355.87 )
-rotation = 1.5708
+position = Vector2( 775.119, 378.329 )
+rotation = 1.59315
 offset = 30.0
 script = ExtResource( 54 )
 
@@ -786,10 +786,11 @@ script = ExtResource( 54 )
 position = Vector2( 517.241, 362.922 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 458.041, 343.234 )
+position = Vector2( 227.475, 508.284 )
 
 [node name="monster" parent="." instance=ExtResource( 3 )]
-position = Vector2( 264.823, 333.565 )
+position = Vector2( 265.453, 357.504 )
+collision_layer = 0
 patrol_paths = [ NodePath("../Navigation2D/room_1/PathFollow2D") ]
 
 [connection signal="change_door" from="player" to="door" method="_on_player_change_door"]
