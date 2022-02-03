@@ -1,21 +1,18 @@
 extends KinematicBody2D
 
-var speed = 100.0 # Monster's speed measured by pixel
+export var speed : float = 100.0 # Monster's speed measured by pixel
+export var patrol_paths : Array
+
 var path : PoolVector2Array # Pathing for monsters
 var nav_2d : Navigation2D # Navigation2D to ascertain path
 var target # Current target
 var line : Line2D # Visually showing path
 var state : String = "Idle" # Monster's current state
-var rooms_parent : Node2D
-var rooms : Array
+var path_fol : PathFollow2D
 
 onready var rayCast2D = $RayCast2D # Monster's vision
 
 func _physics_process(delta):
-	# Setting up rooms location
-	if rooms.size() == 0:
-		rooms = rooms_parent.rooms
-		print(rooms)
 	
 	# Vision / Hearing
 	var collision_object = rayCast2D.get_collider()
@@ -25,25 +22,19 @@ func _physics_process(delta):
 	
 	# State machine
 	if state == "Idle":
-		# Patrolling rooms
-		# Choose room to patrol (WIP) (DEPRECATED)
-		var patrol_dis = 1000
-		var patrol_pos = global_position
-		for i in rooms:
-			print(global_position.distance_to(i))
-			if global_position.distance_to(i) < patrol_dis and global_position.distance_to(i) > 50:
-				patrol_dis = global_position.distance_to(i)
-				patrol_pos = i
+		# Choose patrol path
+		var dist = 1000
+		for i in patrol_paths:
+			var temp = get_node(i)
+			if global_position.distance_to(temp.global_position) < dist:
+				dist = global_position.distance_to(temp.global_position)
+				path_fol = temp
 		
-		# Set path
-		path = []
-		for i in range(rooms.size()):
-			if i == 0:
-				path.append_array(nav_2d.get_simple_path(global_position, rooms[i], false))
-			else:
-				path.append_array(nav_2d.get_simple_path(rooms[i-1], rooms[i], false))
-		line.points = path
+		# Change state
 		state = "Patrol"
+	elif state == "Patrol":
+		path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
+		line.points = path
 	elif state == "Chase":
 		# Chase target
 		path = nav_2d.get_simple_path(global_position, target.global_position, false)
