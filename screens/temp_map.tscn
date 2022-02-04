@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://assets/tilemap/blood_remains_tile_2.jpg" type="Texture" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://assets/tilemap/specimen_storage_tile_2.jpg" type="Texture" id=52]
 [ext_resource path="res://assets/tilemap/steel_tile_1.jpg" type="Texture" id=53]
 [ext_resource path="res://screens/scripts/path_fol.gd" type="Script" id=54]
+[ext_resource path="res://source/objects/interactable.tscn" type="PackedScene" id=55]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 0, 160, 0, 160, 160, 0, 160 )
@@ -781,6 +782,9 @@ offset = 30.0
 script = ExtResource( 54 )
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="interact_1" parent="." instance=ExtResource( 55 )]
+position = Vector2( 379.148, 467.132 )
 
 [node name="door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 517.241, 362.922 )

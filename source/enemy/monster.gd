@@ -20,7 +20,7 @@ onready var visionCone = $sprite/Light2D/Area2D
 func _ready():
 	rng.randomize()
 
-func _process(delta):
+func _process(_delta):
 	
 	# Vision / Hearing
 	var collision_object = rayCast2D.get_collider()
@@ -66,12 +66,14 @@ func _physics_process(delta):
 	elif state == "Chase":
 		# Chase target in last seen position
 		path = nav_2d.get_simple_path(global_position, chase_pos, true)
+		
+		# If already reached position but does attack player
 		if global_position.distance_to(chase_pos) < 10:
 			state = "Search"
 			counter = rng.randf_range(0.5, 2.0)
 		
+	line.points = path		# Path vizualisation
 	
-	line.points = path
 	# Move
 	var move_distance = speed * delta
 	move_along_path(move_distance)
@@ -80,12 +82,12 @@ func _physics_process(delta):
 # Movement code following path
 func move_along_path(distance : float):
 	var start_point = position
-	for i in range(path.size()):
+	for _i in range(path.size()):
 		var distance_to_next = start_point.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
 			$sprite.rotation = get_angle_to(path[0])
-			move_and_slide(Vector2(0,0))
+			var _collision = move_and_slide(Vector2(0,0))
 			break
 		distance -= distance_to_next
 		

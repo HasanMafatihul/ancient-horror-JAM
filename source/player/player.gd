@@ -2,7 +2,10 @@ extends KinematicBody2D
 
 export var speed = 150
 
-var velocity:Vector2
+onready var interact_area = $interact
+
+var velocity : Vector2
+var interact : Array
 
 #TEMP
 signal change_door
@@ -20,8 +23,16 @@ func get_input():
 		movement.x += speed
 	return movement
 
+func _process(_delta):
+	# Interaction with objects
+	interact = interact_area.get_overlapping_areas()
+	if Input.is_action_pressed("interact"):
+		for i in interact:
+			if i.is_in_group("interact"):
+				i.interact()
+
 # Move per physic process (see godot documentation)
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = get_input()
 	
 	# Open/close door

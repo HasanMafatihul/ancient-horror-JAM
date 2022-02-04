@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/player/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/light_mask_2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.7401, 24.7976 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40.8041, 39.6017 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -26,3 +30,8 @@ texture = ExtResource( 3 )
 mode = 3
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
+shape = SubResource( 2 )
