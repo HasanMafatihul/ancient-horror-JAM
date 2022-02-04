@@ -9,6 +9,11 @@ var songDict = {
 	"ost_default": "res://audio/ost/menu-stage_mungkin.mp3",
 }
 
+# How to add sound:
+#	+ Add "AudioStream" node under audiocontrol. Name it appropriately. Child it to
+#	  other node as needed
+#	+ Add the corresponding AudioStream node with it's name in soundDict (example below)
+
 var soundDict = {
 	"shoot" : "player/shoot",
 }
