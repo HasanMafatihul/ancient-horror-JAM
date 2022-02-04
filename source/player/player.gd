@@ -15,12 +15,16 @@ func get_input():
 	var movement = Vector2()
 	if Input.is_action_pressed("up"):
 		movement.y -= speed
+		rotation_degrees = 0
 	if Input.is_action_pressed("down"):
 		movement.y += speed
+		rotation_degrees = 180
 	if Input.is_action_pressed("left"):
 		movement.x -= speed
+		rotation_degrees = 270
 	if Input.is_action_pressed("right"):
 		movement.x += speed
+		rotation_degrees = 90
 	return movement
 
 func _process(_delta):
