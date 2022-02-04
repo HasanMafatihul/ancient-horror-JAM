@@ -44,7 +44,10 @@ func _physics_process(_delta):
 		emit_signal("change_door")
 	
 	# Animation
-	
+	if velocity == Vector2(0, 0):
+		$sprite.animation = "idle"
+	else:
+		$sprite.animation = "walk"
 		
 	# Movement
 	velocity = move_and_slide(velocity)
