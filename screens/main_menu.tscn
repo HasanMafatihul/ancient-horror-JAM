@@ -6,6 +6,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -14,17 +15,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="start" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.0
-margin_top = -10.0
-margin_right = 6.0
-margin_bottom = 10.0
+margin_left = -55.0
+margin_top = -27.0
+margin_right = 55.0
+margin_bottom = 27.0
 text = "Start"
 script = ExtResource( 1 )
+
+[node name="option" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = 42.7944
+margin_right = 55.0
+margin_bottom = 96.7944
+text = "Option"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = 120.135
+margin_right = 55.0
+margin_bottom = 174.135
+text = "Exit"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+path = "quit"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.5
+margin_top = -170.975
+margin_right = 92.5
+margin_bottom = -156.975
+text = "Horror Something Something"
+align = 1

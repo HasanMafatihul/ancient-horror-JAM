@@ -21,12 +21,18 @@ var soundDict = {
 # Setting the volume every process
 func _process(_delta):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(volume_master/100))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db(volume_master/100))
 
 # Play song using ost audiostream
-func playSong(song: String):
+func playSong(song: String, pos: float = 0.0):
 	if turned:
 		ost.stream.resource_path = songDict[song]
 		ost.play()
+		ost.seek(pos)
+
+# Get current ost's current time
+func getSongTime() -> float:
+	return ost.get_playback_position()
 
 # Play sound using respective audiostream
 func playSound(sound:String):
