@@ -8,7 +8,7 @@
 [ext_resource path="res://screens/scripts/path_fol.gd" type="Script" id=54]
 [ext_resource path="res://source/objects/interactable.tscn" type="PackedScene" id=55]
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 775.79, 348.318, 0, 0, 0, 0, 766.27, 774.375, 0, 0, 0, 0, 273.714, 747.678, 0, 0, 0, 0, 262.247, 360.805, 0, 0, 0, 0, 775.79, 348.318 )
 }
@@ -27,7 +27,7 @@ format = 1
 tile_data = PoolIntArray( 65537, 39, 0, 65538, 39, 0, 65539, 39, 0, 65540, 39, 0, 65541, 39, 0, 65542, 39, 0, 131073, 39, 0, 131074, 37, 0, 131075, 37, 0, 131076, 37, 0, 131077, 37, 0, 131078, 39, 0, 131079, 37, 0, 131080, 37, 0, 131081, 37, 0, 131082, 37, 0, 196609, 39, 0, 196610, 37, 0, 196611, 37, 0, 196612, 37, 0, 196613, 37, 0, 196614, 39, 0, 196615, 37, 0, 196616, 37, 0, 196617, 37, 0, 196618, 37, 0, 262145, 39, 0, 262146, 37, 0, 262147, 37, 0, 262148, 37, 0, 262149, 37, 0, 262150, 19, 0, 262151, 37, 0, 262152, 37, 0, 262153, 37, 0, 262154, 37, 0, 327681, 39, 0, 327682, 37, 0, 327683, 37, 0, 327684, 37, 0, 327685, 37, 0, 327686, 39, 0, 327687, 37, 0, 327688, 37, 0, 327689, 37, 0, 327690, 37, 0, 393217, 39, 0, 393218, 39, 0, 393219, 19, 0, 393220, 39, 0, 393221, 39, 0, 393222, 39, 0, 393225, 19, 0, 458754, 37, 0, 458755, 37, 0, 458756, 37, 0, 458757, 37, 0, 458759, 37, 0, 458760, 37, 0, 458761, 37, 0, 458762, 37, 0, 524290, 37, 0, 524291, 37, 0, 524292, 37, 0, 524293, 37, 0, 524295, 37, 0, 524296, 37, 0, 524297, 37, 0, 524298, 37, 0, 589826, 37, 0, 589827, 37, 0, 589828, 37, 0, 589829, 37, 0, 589830, 19, 0, 589831, 37, 0, 589832, 37, 0, 589833, 37, 0, 589834, 37, 0, 655362, 37, 0, 655363, 37, 0, 655364, 37, 0, 655365, 37, 0, 655367, 37, 0, 655368, 37, 0, 655369, 37, 0, 655370, 37, 0 )
 
 [node name="room_1" type="Path2D" parent="Navigation2D"]
-curve = SubResource( 4 )
+curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Navigation2D/room_1"]
 position = Vector2( 775.119, 378.328 )
@@ -39,6 +39,7 @@ script = ExtResource( 54 )
 
 [node name="interact_1" parent="." instance=ExtResource( 55 )]
 position = Vector2( 379.148, 467.132 )
+main = NodePath("..")
 
 [node name="door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 517.241, 362.922 )
@@ -50,5 +51,6 @@ position = Vector2( 267.073, 457.372 )
 position = Vector2( 265.453, 357.504 )
 collision_layer = 0
 patrol_paths = [ NodePath("../Navigation2D/room_1/PathFollow2D") ]
+main = NodePath("..")
 
 [connection signal="change_door" from="player" to="door" method="_on_player_change_door"]
