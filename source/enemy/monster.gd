@@ -41,56 +41,54 @@ func _process(_delta):
 
 func _physics_process(delta):
 	# State machine
-	if state == "Idle":
-		# Choose patrol path
-		var dist = 1000
-		for i in patrol_paths:
-			var temp = get_node(i)
-			if global_position.distance_to(temp.global_position) < dist:
-				dist = global_position.distance_to(temp.global_position)
-				path_fol = temp
-		
-		# Change state
-		state = "Init_Patrol"
-	
-	elif state == "Init_Patrol":
-		# Starting Patrol
-		path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
-		if global_position.distance_to(path_fol.global_position) < 10:
-			state = "Patrol"
-		
-		# Animation
-		sprite.animation = "walk"
-	
-	elif state == "Patrol":
-		path = nav_2d.get_simple_path(global_position, path_fol.global_position, true)
-		sprite.animation = "walk_slow"
-	
-	elif state == "Search":
-		# Search player
-		counter -= delta
-		if counter <= 0:
-			$pivot.rotate(deg2rad(rng.randf_range(0, 180)))
-			counter = rng.randf_range(3.0, 5.0)
-			if counter > 4.5:
-				state = "Idle"
-		
-		sprite.animation = "idle"
-	
-	elif state == "Chase":
-		# Chase target in last seen position
-		path = nav_2d.get_simple_path(global_position, chase_pos, true)
-		
-		# If already reached position but does attack player
-		if global_position.distance_to(chase_pos) < 10:
-			state = "Search"
-			counter = rng.randf_range(0.5, 2.0)
+	match state:
+		"Idle":
+			# Choose patrol path
+			var dist = 1000
+			for i in patrol_paths:
+				var temp = get_node(i)
+				if global_position.distance_to(temp.global_position) < dist:
+					dist = global_position.distance_to(temp.global_position)
+					path_fol = temp
 			
-		sprite.animation = "walk"
+			# Change state
+			state = "Init_Patrol"
+		"Init_Patrol":
+			# Starting Patrol
+			path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
+			if global_position.distance_to(path_fol.global_position) < 10:
+				state = "Patrol"
+			
+			# Animation
+			sprite.animation = "walk"
+		"Patrol":
+			path = nav_2d.get_simple_path(global_position, path_fol.global_position, true)
+			sprite.animation = "walk_slow"
+		
+		"Search":
+			# Search player
+			counter -= delta
+			if counter <= 0:
+				$pivot.rotate(deg2rad(rng.randf_range(0, 180)))
+				counter = rng.randf_range(3.0, 5.0)
+				if counter > 4.5:
+					state = "Idle"
+			sprite.animation = "idle"
 	
-	elif state == "Alert":
-		path = nav_2d.get_simple_path(global_position, get_node(main).alarm[1], false)
-		sprite.animation = "walk"
+		"Chase":
+			# Chase target in last seen position
+			path = nav_2d.get_simple_path(global_position, chase_pos, true)
+			
+			# If already reached position but does attack player
+			if global_position.distance_to(chase_pos) < 10:
+				state = "Search"
+				counter = rng.randf_range(0.5, 2.0)
+				
+			sprite.animation = "walk"
+		
+		"Alert":
+			path = nav_2d.get_simple_path(global_position, get_node(main).alarm[1], false)
+			sprite.animation = "walk"
 	
 	line.points = path		# Path vizualisation
 	
