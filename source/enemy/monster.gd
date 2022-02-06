@@ -106,7 +106,7 @@ func _physics_process(delta):
 		if i == door_tilemap:
 			door_counter -= delta
 			if door_counter <= 0.0:
-				door_counter = 0
+				door_counter = 5.0
 				door_tilemap.breakDoor(global_position)
 		elif i == target:
 			print("You died!!")

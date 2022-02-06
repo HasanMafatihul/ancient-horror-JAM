@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/sounds/ui button.wav" type="AudioStream" id=3]
 
 [node name="audioControl" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
@@ -14,3 +15,4 @@ stream = ExtResource( 2 )
 
 [node name="click" type="AudioStreamPlayer" parent="ui"]
 stream = ExtResource( 3 )
+bus = "sfx"

@@ -21,13 +21,13 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk_slow",
-"speed": 4.0
+"name": "walk",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk",
-"speed": 7.0
+"name": "walk_slow",
+"speed": 4.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

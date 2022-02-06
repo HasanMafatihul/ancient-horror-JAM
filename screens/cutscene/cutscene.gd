@@ -22,8 +22,6 @@ func _input(event):
 				print(type)
 				if type == 19:
 					play_Anim(texts[text_i][0])
-					if texts[text_i][0] == "blackout":
-						audio.stopSong()
 				if type == 15:
 					get_node(texts[text_i]).play()
 				elif type == 4:
