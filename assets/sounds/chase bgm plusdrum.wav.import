@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chase bgm plusdrum.wav-3f7d8db220f7ead52c2f62a682d91a2f.sample"
+
+[deps]
+
+source_file="res://assets/sounds/chase bgm plusdrum.wav"
+dest_files=[ "res://.import/chase bgm plusdrum.wav-3f7d8db220f7ead52c2f62a682d91a2f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

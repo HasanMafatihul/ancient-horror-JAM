@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
+[ext_resource path="res://assets/sounds/footstep cut.wav" type="AudioStream" id=1]
 [ext_resource path="res://source/player/player.gd" type="Script" id=2]
 [ext_resource path="res://assets/light_mask_2.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/astronaut_die_2.png" type="Texture" id=4]
@@ -66,3 +67,9 @@ scale = Vector2( 0.256499, 0.256499 )
 frames = SubResource( 3 )
 animation = "idle"
 playing = true
+
+[node name="sound" type="Node2D" parent="."]
+
+[node name="footstep" type="AudioStreamPlayer2D" parent="sound"]
+stream = ExtResource( 1 )
+autoplay = true

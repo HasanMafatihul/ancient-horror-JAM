@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://screens/scripts/button_global.gd" type="Script" id=1]
 [ext_resource path="res://default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/Monthoers.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/menu.png" type="Texture" id=4]
 [ext_resource path="res://screens/scripts/noise.gd" type="Script" id=5]
+[ext_resource path="res://screens/scripts/main_menu.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -18,10 +19,11 @@ width = 1028
 height = 600
 noise = SubResource( 2 )
 
-[node name="Control2" type="Control"]
+[node name="main_menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false

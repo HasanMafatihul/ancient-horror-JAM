@@ -52,5 +52,3 @@ position = Vector2( 265.453, 357.504 )
 collision_layer = 0
 patrol_paths = [ NodePath("../Navigation2D/room_1/PathFollow2D") ]
 main = NodePath("..")
-
-[connection signal="change_door" from="player" to="door" method="_on_player_change_door"]

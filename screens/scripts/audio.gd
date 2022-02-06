@@ -6,7 +6,8 @@ var volume_master = 100
 var volume_sfx = 100
 
 var songDict = {
-	"ost_default": "res://audio/ost/menu-stage_mungkin.mp3",
+	"ost_menu": "res://assets/sounds/default but happy for menus.wav",
+	"ost_gameplay": "res://assets/sounds/defaultbgm with space ambience.wav",
 }
 
 # How to add sound:
@@ -16,6 +17,7 @@ var songDict = {
 
 var soundDict = {
 	"shoot" : "player/shoot",
+	"ui_click" : "ui/click",
 }
 
 # Setting the volume every process
@@ -43,3 +45,7 @@ func stopAll():
 	ost.stop()
 	for i in soundDict.keys():
 		get_node(soundDict[i]).stop()
+
+# Stop song
+func stopSong():
+	ost.stop()

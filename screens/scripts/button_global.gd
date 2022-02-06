@@ -5,6 +5,7 @@ export var altkey : String
 
 func _pressed():
 	global.goto_scene(path)
+	audio.playSound("ui_click")
 
 func _input(event):
 	if altkey:

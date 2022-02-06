@@ -7,8 +7,7 @@ onready var interact_area = $interact
 var velocity : Vector2
 var interact : Array
 
-#TEMP
-signal change_door
+onready var footstep = $sound/footstep
 
 # Input
 func get_input():
@@ -27,6 +26,9 @@ func get_input():
 		rotation_degrees = 90
 	return movement
 
+func _ready():
+	footstep.play()
+
 func _process(_delta):
 	# Interaction with objects
 	interact = interact_area.get_overlapping_areas()
@@ -42,8 +44,10 @@ func _physics_process(_delta):
 	# Animation
 	if velocity == Vector2(0, 0):
 		$sprite.animation = "idle"
+		footstep.stream_paused = true
 	else:
 		$sprite.animation = "walk"
+		footstep.stream_paused = false
 		
 	# Movement
 	velocity = move_and_slide(velocity)
