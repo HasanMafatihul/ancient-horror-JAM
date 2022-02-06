@@ -10,24 +10,6 @@ extents = Vector2( 24.7401, 24.7976 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 40.8041, 39.6017 )
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "die",
-"speed": 1.0
-} ]
-
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
