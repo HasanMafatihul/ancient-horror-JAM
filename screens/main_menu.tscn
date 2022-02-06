@@ -1,23 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://screens/scripts/button_global.gd" type="Script" id=1]
 [ext_resource path="res://default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/Monthoers.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/menu.png" type="Texture" id=4]
-[ext_resource path="res://screens/scripts/noise.gd" type="Script" id=5]
+[ext_resource path="res://source/static_filter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://screens/scripts/main_menu.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 3 )
-
-[sub_resource type="OpenSimplexNoise" id=2]
-period = 20.0
-
-[sub_resource type="NoiseTexture" id=3]
-width = 1028
-height = 600
-noise = SubResource( 2 )
 
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
@@ -104,18 +96,4 @@ __meta__ = {
 }
 path = "quit"
 
-[node name="noise" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.0588235 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -0.629944
-margin_top = 0.629944
-margin_right = -0.629944
-margin_bottom = 0.629944
-mouse_filter = 2
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="noise" parent="." instance=ExtResource( 5 )]
