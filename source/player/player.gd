@@ -39,10 +39,6 @@ func _process(_delta):
 func _physics_process(_delta):
 	velocity = get_input()
 	
-	# Open/close door
-	if Input.is_action_just_pressed("ui_accept"):
-		emit_signal("change_door")
-	
 	# Animation
 	if velocity == Vector2(0, 0):
 		$sprite.animation = "idle"

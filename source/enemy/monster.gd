@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed : float = 100.0 # Monster's speed measured by pixel
 export var patrol_paths : Array
 export var main : NodePath
+export var door_tile : NodePath
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var counter : float = 0
@@ -14,10 +15,13 @@ var chase_pos : Vector2
 var line : Line2D # Visually showing path
 var state : String = "Idle" # Monster's current state
 var path_fol : PathFollow2D
+var door_counter : float = 5.0 # Door break counter
 
 onready var rayCast2D = $RayCast2D # Monster's vision
 onready var visionCone = $pivot/sprite/Light2D/Area2D
 onready var sprite = $pivot/sprite
+onready var interaction = $interaction
+onready var door_tilemap = get_node(door_tile)
 
 func _ready():
 	rng.randomize()
@@ -58,7 +62,6 @@ func _physics_process(delta):
 			path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
 			if global_position.distance_to(path_fol.global_position) < 10:
 				state = "Patrol"
-			print(path_fol.global_position)
 			# Animation
 			sprite.animation = "walk"
 		"Patrol":
@@ -92,10 +95,21 @@ func _physics_process(delta):
 	
 	#line.points = path		# Path vizualisation
 	
+	# Break door
+	var interact = interaction.get_overlapping_bodies()
+	for i in interact:
+		if i == door_tilemap:
+			door_counter -= delta
+			if door_counter <= 0.0:
+				door_counter = 0
+				door_tilemap.breakDoor(global_position)
+	
 	# Move
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	#move_and_slide(Vector2(0.0, 0.0))
+	
+	
 
 # Movement code following path
 func move_along_path(distance : float):
@@ -105,7 +119,8 @@ func move_along_path(distance : float):
 		if distance <= distance_to_next and distance >= 0.0:
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
 			$pivot.rotation = get_angle_to(path[0])
-			#var _collision = move_and_slide(Vector2(0,0))
+			var _collision = move_and_slide(Vector2(0,0))
+			
 			break
 		distance -= distance_to_next
 		

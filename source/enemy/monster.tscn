@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/enemy/monster.gd" type="Script" id=2]
@@ -21,14 +21,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk",
-"speed": 7.0
+"name": "walk_slow",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "walk_slow",
-"speed": 4.0
+"name": "walk",
+"speed": 7.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 56, 48 )
 
 [node name="monster" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -66,3 +69,9 @@ texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pivot/sprite/Light2D/Area2D"]
 polygon = PoolVector2Array( 84.4445, -84.4445, 0, 0, -84.4445, -84.4445, -48.8889, -115.556, 0, -120, 48.8889, -115.556 )
+
+[node name="interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction"]
+position = Vector2( 8, 0 )
+shape = SubResource( 3 )
