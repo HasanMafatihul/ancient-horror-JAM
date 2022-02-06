@@ -14,11 +14,6 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_slow",
-"speed": 4.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
@@ -28,6 +23,11 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_slow",
+"speed": 4.0
 } ]
 
 [node name="monster" type="KinematicBody2D"]
@@ -52,12 +52,13 @@ enabled = true
 
 [node name="sprite" type="AnimatedSprite" parent="pivot"]
 rotation = 1.5708
-scale = Vector2( 0.166667, 0.166667 )
+scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
 
 [node name="Light2D" type="Light2D" parent="pivot/sprite"]
+visible = false
 scale = Vector2( 10.8, 10.8 )
 texture = ExtResource( 3 )
 

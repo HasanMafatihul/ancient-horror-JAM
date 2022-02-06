@@ -45,11 +45,12 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 2, 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
-visible = false
 scale = Vector2( 3.3811, 3.3811 )
 texture = ExtResource( 3 )
+texture_scale = 1.5
 mode = 3
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -61,7 +62,7 @@ shape = SubResource( 2 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 rotation = 3.14159
-scale = Vector2( 0.153491, 0.153491 )
+scale = Vector2( 0.256499, 0.256499 )
 frames = SubResource( 3 )
 animation = "idle"
 playing = true

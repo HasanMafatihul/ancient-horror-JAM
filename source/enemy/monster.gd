@@ -44,7 +44,7 @@ func _physics_process(delta):
 	match state:
 		"Idle":
 			# Choose patrol path
-			var dist = 1000
+			var dist = 1000000000
 			for i in patrol_paths:
 				var temp = get_node(i)
 				if global_position.distance_to(temp.global_position) < dist:
@@ -58,7 +58,7 @@ func _physics_process(delta):
 			path = nav_2d.get_simple_path(global_position, path_fol.global_position, false)
 			if global_position.distance_to(path_fol.global_position) < 10:
 				state = "Patrol"
-			
+			print(path_fol.global_position)
 			# Animation
 			sprite.animation = "walk"
 		"Patrol":
@@ -77,7 +77,7 @@ func _physics_process(delta):
 	
 		"Chase":
 			# Chase target in last seen position
-			path = nav_2d.get_simple_path(global_position, chase_pos, true)
+			path = nav_2d.get_simple_path(global_position, chase_pos, false)
 			
 			# If already reached position but does attack player
 			if global_position.distance_to(chase_pos) < 10:
@@ -90,7 +90,7 @@ func _physics_process(delta):
 			path = nav_2d.get_simple_path(global_position, get_node(main).alarm[1], false)
 			sprite.animation = "walk"
 	
-	line.points = path		# Path vizualisation
+	#line.points = path		# Path vizualisation
 	
 	# Move
 	var move_distance = speed * delta
@@ -105,7 +105,7 @@ func move_along_path(distance : float):
 		if distance <= distance_to_next and distance >= 0.0:
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
 			$pivot.rotation = get_angle_to(path[0])
-			var _collision = move_and_slide(Vector2(0,0))
+			#var _collision = move_and_slide(Vector2(0,0))
 			break
 		distance -= distance_to_next
 		
