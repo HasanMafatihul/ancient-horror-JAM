@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://source/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilemap_default.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Tile Pattern.png" type="Texture" id=7]
 [ext_resource path="res://screens/scripts/path_fol.gd" type="Script" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://source/objective/objective.tscn" type="PackedScene" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -124,6 +125,8 @@ speed = 200.0
 curve = SubResource( 5 )
 
 [node name="path_2" type="PathFollow2D" parent="Navigation2D/pat_2"]
+position = Vector2( -1255.07, 1316.6 )
+rotation = -1.56726
 script = ExtResource( 8 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
@@ -150,3 +153,8 @@ main = NodePath("..")
 door_tile = NodePath("../TileMapDoor")
 nav_path = NodePath("../Navigation2D")
 player_path = NodePath("../player")
+
+[node name="objective" parent="." instance=ExtResource( 10 )]
+position = Vector2( -1754.63, -5266.53 )
+scale = Vector2( 8, 8 )
+player_node = NodePath("../player")
