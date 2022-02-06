@@ -15,6 +15,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		changeDoorState()
 
+# May be deprecated
 func changeDoorState():
 	posTile = world_to_map(get_parent().get_node("player").global_position)
 	for i in range(posTile.x - 2 , posTile.x + 2): # -2 ~ +1
@@ -33,6 +34,7 @@ func changeDoorState():
 				if(doorID == 6 and posTile.x-0 <= i and i <= posTile.x+1 and posTile.y-1 <= j and j <= posTile.y-0):
 					changeOneDoorState(Vector2(i,j))
 
+# Used by monster
 func breakDoor(pos):
 	posTile = world_to_map(pos)
 	for i in range(posTile.x - 2 , posTile.x + 2): # -2 ~ +1
@@ -51,12 +53,14 @@ func breakDoor(pos):
 				if(doorID == 6 and posTile.x-0 <= i and i <= posTile.x+1 and posTile.y-1 <= j and j <= posTile.y-0):
 					changeOneDoorState(Vector2(i,j))
 
+# Reverse a door state
 func changeOneDoorState(pos : Vector2):
 	set_cell(pos.x , pos.y, 1 - get_cell(pos.x , pos.y), 
 		is_cell_x_flipped(pos.x , pos.y), # memastikan rotasi sama
 		is_cell_y_flipped(pos.x , pos.y),
 		is_cell_transposed(pos.x , pos.y))
 
+# Change all door state according to strategy
 func changeAllDoorState(strategy = "reverse"):
 	var used_cells = get_used_cells()
 	for i in used_cells:

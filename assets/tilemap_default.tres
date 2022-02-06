@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=52 format=2]
+[gd_resource type="TileSet" load_steps=54 format=2]
 
 [ext_resource path="res://assets/tilemap/blood_remains_tile_2.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/tilemap/blood_remains_tile_1.jpg" type="Texture" id=2]
@@ -57,6 +57,12 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 0, 0, 160, 0, 160, 160, 0, 160 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 128, 160, 0, 160, 0, 0, 128, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 128, 160, 0, 160, 0, 0, 128, 0 )
 
 [resource]
 0/name = "blood_remains_tile_1.jpg 0"
@@ -617,9 +623,16 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 39/navigation_offset = Vector2( 0, 0 )
 39/shape_offset = Vector2( 0, 0 )
 39/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+39/shape = SubResource( 3 )
 39/shape_one_way = false
-39/shape_one_way_margin = 0.0
-39/shapes = [  ]
+39/shape_one_way_margin = 1.0
+39/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 39/z_index = 0
 40/name = "specimen_storage_tile_2.jpg 40"
 40/texture = ExtResource( 19 )
@@ -631,9 +644,16 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 40/navigation_offset = Vector2( 0, 0 )
 40/shape_offset = Vector2( 0, 0 )
 40/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+40/shape = SubResource( 4 )
 40/shape_one_way = false
-40/shape_one_way_margin = 0.0
-40/shapes = [  ]
+40/shape_one_way_margin = 1.0
+40/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 40/z_index = 0
 41/name = "steel_tile_1.jpg 41"
 41/texture = ExtResource( 13 )

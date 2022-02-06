@@ -62,10 +62,10 @@ _data = {
 script = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -2664.0
-margin_top = -6024.0
-margin_right = 4472.0
-margin_bottom = 3080.0
+margin_left = -4768.0
+margin_top = -7656.0
+margin_right = 6760.0
+margin_bottom = 5304.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
