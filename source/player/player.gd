@@ -31,11 +31,15 @@ func _ready():
 
 func _process(_delta):
 	# Interaction with objects
+	$inter_sprite.visible = false
+	$inter_sprite.set_rotation(-rotation)
 	interact = interact_area.get_overlapping_areas()
-	if Input.is_action_pressed("interact"):
-		for i in interact:
-			if i.is_in_group("interact"):
+	for i in interact:
+		if i.is_in_group("interact"):
+			if Input.is_action_just_pressed("interact"):
 				i.interact()
+				$sound/interact.play()
+			$inter_sprite.visible = true
 
 # Move per physic process (see godot documentation)
 func _physics_process(_delta):

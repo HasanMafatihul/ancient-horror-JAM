@@ -80,7 +80,7 @@ tracks/3/keys = {
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 texts = [ "Entering orbit.. Landing at T-10..", "\"Alright, one last recap before we land.\"", "\"We're about to land at XZ-1135, a recently discovered moon that's been suspected to have traces of advanced civilization.\"", "“Unfortunately, there are too much radioactive interference here for remote equipment to work, so we’re going to have to work with what we have.”", "\"Our mission is to explore, identify, and bring back whatever information we can.\"", "\"Well, you people should know these already, so I'll cut it short.\"", "\"Just do your jobs properly and we’ll get to go home soo-", [ "blackout" ], "(CAPTAIN) (frown) ", "(CAPTAIN) *groans*", "(CAPTAIN) Of all the things that could've gone wrong, just what..?", "..!!! Ugh, my legs! Damn, I can't move!", "Stay calm!  ……. ", "(frown) ", "No threats in sight. I'm safe, for now.", "Where is this? Some sort of alien ruins?", "All my equipment's crushed under this rubble.", "Comms are atleast still intact..", "*whirr*", "\"Anybody alive!? Report!\"", "“... I repeat, anybody alive!?”", "....Nobody? ", "(TEAMMATE) \".. ap.. tain..!\"", "[C] \"Finally! Report your status.\"", "[T] \"Surroundings are clear. No injuries, although most of my equipment's damaged.\"", "\"The interference is messing with my comms, I can't contact anyone else.\"", "\"Any luck on your side, capt?\" ", "[C] \"No response either… Let’s just hope for the best.\"", "“I’m trapped inside a control room of sorts, so you’ll have to move on your own.", "Find the rest of the team first. Gather some information while you’re at it.”", "“The controls here are an utter mess.. I’ll try figuring out if any still work.", "I should be able to support you from here.”", "\"There's something else here.. a map. This might be useful for you.\"", "\"... Not sure how reliable it is, though.\" ", "[T] “Thanks, capt. Lead the way, then.”", "[C] Those symbols.. What are they keeping track of?", NodePath("roar"), "[T] \".. What is that noise?\" ", "[C] \"What do you mean, noise?\"", "[T] \"I don't think we're alone here, capt.\"" ]
-next_scene = "res://screens/level_layout.tscn"
+next_scene = "res://screens/main_game.tscn"
 
 [node name="menu" type="Sprite" parent="."]
 position = Vector2( 514, 300 )
@@ -139,7 +139,6 @@ __meta__ = {
 
 [node name="noise" parent="Control" instance=ExtResource( 7 )]
 pause_mode = 2
-modulate = Color( 1, 1, 1, 0.0588235 )
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 0.0
@@ -154,6 +153,7 @@ pause_mode = 2
 anims/blackout = SubResource( 5 )
 
 [node name="crash" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 5 )
 
 [node name="roar" type="AudioStreamPlayer" parent="."]

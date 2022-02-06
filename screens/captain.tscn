@@ -25,6 +25,7 @@ margin_top = 36.0
 margin_right = 361.0
 margin_bottom = 90.0
 mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,6 +37,7 @@ margin_top = 7.0
 margin_right = 241.0
 margin_bottom = 105.0
 mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,6 +49,7 @@ margin_top = 20.0
 margin_right = 467.0
 margin_bottom = 88.0
 mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

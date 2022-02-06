@@ -51,6 +51,10 @@ func _physics_process(delta):
 	# State machine
 	match state:
 		"Idle":
+			# Play appropriate bgm
+			if audio.getSong() == "ost_chase":
+				audio.playSong("ost_gameplay", audio.getSongTime())
+			
 			# Choose patrol path
 			var dist = 1000000000
 			for i in patrol_paths:
@@ -83,6 +87,11 @@ func _physics_process(delta):
 			sprite.animation = "idle"
 	
 		"Chase":
+			# Play bgm
+			if audio.current_song == "ost_gameplay":
+				var time = audio.getSongTime()
+				audio.playSong("ost_chase", time)
+			
 			# Chase target in last seen position
 			path = nav_2d.get_simple_path(global_position, chase_pos, false)
 			
@@ -104,12 +113,16 @@ func _physics_process(delta):
 	for i in interact:
 		# Break door
 		if i == door_tilemap:
+			if $audio/doorBang.playing == false:
+				$audio/doorBang.play()
 			door_counter -= delta
 			if door_counter <= 0.0:
 				door_counter = 5.0
 				door_tilemap.breakDoor(global_position)
+				$audio/doorBreak.play()
+				$audio/doorBang.stop()
 		elif i == target:
-			print("You died!!")
+			global.goto_scene("res://screens/death.tscn")
 	
 	# Move
 	var move_distance = speed * delta

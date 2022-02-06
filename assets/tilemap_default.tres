@@ -59,10 +59,10 @@ vertices = PoolVector2Array( 0, 0, 160, 0, 160, 160, 0, 160 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 128, 160, 0, 160, 0, 0, 128, 0 )
+points = PoolVector2Array( 130, 160, 0, 160, 0, 40, 130, 40 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 128, 160, 0, 160, 0, 0, 128, 0 )
+points = PoolVector2Array( 130, 120, 0, 120, 0, 0, 130, 0 )
 
 [resource]
 0/name = "blood_remains_tile_1.jpg 0"

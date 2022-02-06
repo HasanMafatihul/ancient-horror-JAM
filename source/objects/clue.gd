@@ -5,7 +5,7 @@ extends Area2D
 #	+ Add object's function in interact() function
 
 export var main : NodePath
-export var clue : String
+export(String, MULTILINE) var clue
 
 func interact():
 	get_node(main).show_clue(clue)

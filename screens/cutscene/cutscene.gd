@@ -11,6 +11,7 @@ onready var anim = $AnimationPlayer
 func _ready():
 	text_scene.percent_visible = 0
 	text_scene.text = texts[text_i]
+	audio.playSound("ui_text")
 
 func _input(event):
 	# When ui_accept is pressed, either finish current text, or continue to next text
@@ -26,6 +27,7 @@ func _input(event):
 					get_node(texts[text_i]).play()
 				elif type == 4:
 					text_scene.visible_characters = 0
+					audio.playSound("ui_text")
 					text_scene.text = texts[text_i]
 			else:
 				# If no text after, goto next scene

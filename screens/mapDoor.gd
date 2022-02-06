@@ -10,10 +10,10 @@ var transpose: int
 func _ready():
 	pass # Replace with function body.
 	
-func _input(event):
-	#Temporary button
-	if event.is_action_pressed("ui_accept"):
-		changeDoorState()
+#func _input(event):
+#	#Temporary button
+#	if event.is_action_pressed("ui_accept"):
+#		changeDoorState()
 
 # May be deprecated
 func changeDoorState():
@@ -73,5 +73,4 @@ func changeAllDoorState(strategy = "reverse"):
 			"open":
 				if get_cellv(i) == 0:
 					changeOneDoorState(i)
-	print(get_used_cells())
 	

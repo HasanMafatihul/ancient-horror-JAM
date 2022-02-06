@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/sounds/footstep cut.wav" type="AudioStream" id=1]
 [ext_resource path="res://source/player/player.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/sprites/astronaut_walk_2.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/astronaut_walk_4.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/astronaut_walk_5.png" type="Texture" id=13]
+[ext_resource path="res://assets/fonts/Monthoers.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/sounds/interact.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.7401, 24.7976 )
@@ -27,16 +29,21 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "die",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -73,3 +80,28 @@ playing = true
 [node name="footstep" type="AudioStreamPlayer2D" parent="sound"]
 stream = ExtResource( 1 )
 autoplay = true
+
+[node name="interact" type="AudioStreamPlayer2D" parent="sound"]
+stream = ExtResource( 15 )
+
+[node name="inter_sprite" type="Sprite" parent="."]
+
+[node name="inter_lab" type="Label" parent="inter_sprite"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.5
+margin_top = -16.5
+margin_right = 44.5
+margin_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 4 )
+text = "interact"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
