@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://source/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tilemap_default.tres" type="TileSet" id=2]
@@ -13,13 +13,13 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-onready var monster = $monster
+#onready var monster = $monster
 var alarm : Array = [false, Vector2(0,0), 0] # [IsAlarmOn, AlarmLocation in Vector2, AlarmTimer]
 
-func _ready():
-	monster.nav_2d = $Navigation2D
-	monster.target = $player
-	#monster.line = $Line2D
+#func _ready():
+#	monster.nav_2d = $Navigation2D
+#	monster.target = $player
+#	#monster.line = $Line2D
 
 func _process(delta):
 	# Alarm timer countdown
@@ -28,6 +28,7 @@ func _process(delta):
 	if alarm[2] <= 0:
 		alarm[0] = false
 
+# Setting alarm in certain position
 func alarm(pos):
 	alarm = [true, pos, 5]
 "
@@ -56,6 +57,11 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 [sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -1904, -4792, 0, 0, 0, 0, -1000, -4792, 0, 0, 0, 0, -1008, -5440, 0, 0, 0, 0, 3552, -5512, 0, 0, 0, 0, 3536, -3272, 0, 0, 0, 0, 3232, -3344, 0, 0, 0, 0, 3232, -4048, 70.6353, -52.1356, -70.6353, 52.1356, 2624, -4072, 358.222, -13.4543, -358.222, 13.4543, 1960, -3456, 85.7714, 48.772, -85.7714, -48.772, 1336, -3768, 0, 0, 0, 0, 976, -3704, 0, 0, 0, 0, 1000, -2968, 0, 0, 0, 0, 1296, -2800, 0, 0, 0, 0, 1272, -1608, 0, 0, 0, 0, 2264, -1616, 0, 0, 0, 0, 2232, -2888, 0, 0, 0, 0, -1040, -2904, 0, 0, 0, 0, -1072, -3896, 0, 0, 0, 0, 696, -3864, 0, 0, 0, 0, 944, -3880, -87.4532, 89.135, 87.4532, -89.135, 1296, -3928, -595.355, 48.772, 595.355, -48.772, 1896, -4768, -110.998, -36.9994, 110.998, 36.9994, 2640, -4216, 0, 0, 0, 0, 3432, -4144, 0, 0, 0, 0, 3440, -5384, 0, 0, 0, 0, -888, -5392, 0, 0, 0, 0, -936, -4736, 0, 0, 0, 0, -992, -4168, 0, 0, 0, 0, -1976, -4136, 0, 0, 0, 0, -1904, -4792 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1255.07, 1316.6, 0, 0, 0, 0, -1247.01, -975.453, 0, 0, 0, 0, -977.048, -938.662, 0, 0, 0, 0, -984.183, -1300.18, 0, 0, 0, 0, -1243.43, -1300.18, 0, 0, 0, 0, -1262.46, -1973.29, 0, 0, 0, 0, -327.741, -1970.91, 0, 0, 0, 0, -330.119, -1661.71, 0, 0, 0, 0, 0.480469, -1675.98, 0, 0, 0, 0, 7.61572, -1837.72, 0, 0, 0, 0, 961.36, -1863.88, 0, 0, 0, 0, 911.413, -1609.39, 0, 0, 0, 0, 335.837, -1566.58, 0, 0, 0, 0, 326.323, -952.187, 0, 0, 0, 0, 606.976, -972.27, 0, 0, 0, 0, 637.896, -4.36768, 0, 0, 0, 0, 2534, 12.2812, 0, 0, 0, 0, 2538.76, 775.752, 0, 0, 0, 0, 2191.51, 782.465, 0, 0, 0, 0, 2193.89, 1293.82, 0, 0, 0, 0, 1677.77, 1279.55, 0, 0, 0, 0, 1901.34, 953.711, 0, 0, 0, 0, 1894.21, 345.766, 0, 0, 0, 0, 1604.04, 336.252, 0, 0, 0, 0, 1599.29, 788.151, 0, 0, 0, 0, 1263.93, 788.151, 0, 0, 0, 0, 1268.69, 2247.58, 0, 0, 0, 0, -3.67822, 2257.1, 0, 0, 0, 0, 6.57715, 1296.4, 0, 0, 0, 0, -1255.07, 1316.6 )
 }
 
 [node name="Node2D" type="Node2D"]
@@ -114,15 +120,33 @@ rotation = 0.000124081
 script = ExtResource( 8 )
 speed = 200.0
 
+[node name="pat_2" type="Path2D" parent="Navigation2D"]
+curve = SubResource( 5 )
+
+[node name="path_2" type="PathFollow2D" parent="Navigation2D/pat_2"]
+script = ExtResource( 8 )
+
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1392, -4160 )
+position = Vector2( -1099.86, 2332.39 )
 scale = Vector2( 2, 2 )
 speed = 300
 
-[node name="monster" parent="." instance=ExtResource( 6 )]
-position = Vector2( -472, -2944 )
+[node name="monster_1" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1887.44, -4723.9 )
 scale = Vector2( 2, 2 )
 speed = 400.0
 patrol_paths = [ NodePath("../Navigation2D/pat_1/path_1") ]
 main = NodePath("..")
 door_tile = NodePath("../TileMapDoor")
+nav_path = NodePath("../Navigation2D")
+player_path = NodePath("../player")
+
+[node name="monster_2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1127.44, 1356.1 )
+scale = Vector2( 2, 2 )
+speed = 400.0
+patrol_paths = [ NodePath("../Navigation2D/pat_2/path_2") ]
+main = NodePath("..")
+door_tile = NodePath("../TileMapDoor")
+nav_path = NodePath("../Navigation2D")
+player_path = NodePath("../player")

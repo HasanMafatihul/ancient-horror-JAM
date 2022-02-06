@@ -4,13 +4,13 @@ export var speed : float = 100.0 # Monster's speed measured by pixel
 export var patrol_paths : Array
 export var main : NodePath
 export var door_tile : NodePath
+export var nav_path : NodePath
+export var player_path : NodePath
 
 var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 var counter : float = 0
 
 var path : PoolVector2Array # Pathing for monsters
-var nav_2d : Navigation2D # Navigation2D to ascertain path
-var target # Current target
 var chase_pos : Vector2
 var line : Line2D # Visually showing path
 var state : String = "Idle" # Monster's current state
@@ -21,7 +21,9 @@ onready var rayCast2D = $RayCast2D # Monster's vision
 onready var visionCone = $pivot/sprite/Light2D/Area2D
 onready var sprite = $pivot/sprite
 onready var interaction = $interaction
-onready var door_tilemap = get_node(door_tile)
+onready var door_tilemap : TileMap = get_node(door_tile)
+onready var nav_2d : Navigation2D = get_node(nav_path) # Navigation2D to ascertain path
+onready var target : KinematicBody2D = get_node(player_path) # Current target (player)
 
 func _ready():
 	rng.randomize()
@@ -97,21 +99,22 @@ func _physics_process(delta):
 	
 	#line.points = path		# Path vizualisation
 	
-	# Break door
+	# Interaction
 	var interact = interaction.get_overlapping_bodies()
 	for i in interact:
+		# Break door
 		if i == door_tilemap:
 			door_counter -= delta
 			if door_counter <= 0.0:
 				door_counter = 0
 				door_tilemap.breakDoor(global_position)
+		elif i == target:
+			print("You died!!")
 	
 	# Move
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 	#move_and_slide(Vector2(0.0, 0.0))
-	
-	
 
 # Movement code following path
 func move_along_path(distance : float):
