@@ -48,8 +48,11 @@ margin_left = -92.5
 margin_top = -170.975
 margin_right = 92.5
 margin_bottom = -156.975
-text = "Horror Something Something"
+text = "Options"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -67,6 +70,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 443.0
 margin_bottom = 19.0
+text = "Master sound"
 
 [node name="master" type="HSlider" parent="VBoxContainer"]
 margin_top = 23.0
@@ -77,6 +81,7 @@ margin_bottom = 39.0
 margin_top = 43.0
 margin_right = 443.0
 margin_bottom = 62.0
+text = "Sound effect"
 
 [node name="sound" type="HSlider" parent="VBoxContainer"]
 margin_top = 66.0

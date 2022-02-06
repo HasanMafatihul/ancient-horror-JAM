@@ -28,7 +28,9 @@ margin_left = 163.699
 margin_top = 100.392
 margin_right = 176.699
 margin_bottom = 114.392
+focus_mode = 0
 custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,7 +40,9 @@ margin_left = 238.811
 margin_top = 227.705
 margin_right = 251.811
 margin_bottom = 241.705
+focus_mode = 0
 custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,7 +52,9 @@ margin_left = 122.174
 margin_top = 209.852
 margin_right = 135.174
 margin_bottom = 223.852
+focus_mode = 0
 custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

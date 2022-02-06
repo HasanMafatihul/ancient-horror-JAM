@@ -29,15 +29,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "die",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "die",
+"speed": 1.0
 } ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -80,9 +80,11 @@ playing = true
 [node name="footstep" type="AudioStreamPlayer2D" parent="sound"]
 stream = ExtResource( 1 )
 autoplay = true
+bus = "sfx"
 
 [node name="interact" type="AudioStreamPlayer2D" parent="sound"]
 stream = ExtResource( 15 )
+bus = "sfx"
 
 [node name="inter_sprite" type="Sprite" parent="."]
 

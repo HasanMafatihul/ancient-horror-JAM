@@ -82,13 +82,17 @@ stream = ExtResource( 9 )
 volume_db = 5.0
 pitch_scale = 0.8
 autoplay = true
+bus = "sfx"
 
 [node name="roar" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 10 )
 pitch_scale = 0.8
+bus = "sfx"
 
 [node name="doorBang" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 12 )
+bus = "sfx"
 
 [node name="doorBreak" type="AudioStreamPlayer2D" parent="audio"]
 stream = ExtResource( 11 )
+bus = "sfx"

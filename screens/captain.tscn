@@ -24,8 +24,10 @@ margin_left = 315.0
 margin_top = 36.0
 margin_right = 361.0
 margin_bottom = 90.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,8 +38,10 @@ margin_left = 170.0
 margin_top = 7.0
 margin_right = 241.0
 margin_bottom = 105.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,8 +52,10 @@ margin_left = 399.0
 margin_top = 20.0
 margin_right = 467.0
 margin_bottom = 88.0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
+enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -52,7 +52,7 @@ func _physics_process(delta):
 	match state:
 		"Idle":
 			# Play appropriate bgm
-			if audio.getSong() == "ost_chase":
+			if audio.current_song == "ost_chase":
 				audio.playSong("ost_gameplay", audio.getSongTime())
 			
 			# Choose patrol path
