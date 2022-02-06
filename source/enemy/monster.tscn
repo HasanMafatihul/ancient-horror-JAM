@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/enemy/monster.gd" type="Script" id=2]
 [ext_resource path="res://assets/monster_light_mask.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/mob/mob_walk_4.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/mob/mob_idle.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/mob/mob_walk_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/mob/mob_walk_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/mob/mob_walk_3.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_slow",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 7.0
+} ]
 
 [node name="monster" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -15,21 +38,30 @@ visible = false
 scale = Vector2( 8, 8 )
 texture = ExtResource( 1 )
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="sp2" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
-
-[node name="Light2D" type="Light2D" parent="sprite"]
-rotation = 1.5708
-scale = Vector2( 1.8, 1.8 )
-texture = ExtResource( 3 )
-
-[node name="Area2D" type="Area2D" parent="sprite/Light2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sprite/Light2D/Area2D"]
-polygon = PoolVector2Array( 84.4445, -84.4445, 0, 0, -84.4445, -84.4445, -48.8889, -115.556, 0, -120, 48.8889, -115.556 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="sprite" type="AnimatedSprite" parent="pivot"]
+rotation = 1.5708
+scale = Vector2( 0.166667, 0.166667 )
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="Light2D" type="Light2D" parent="pivot/sprite"]
+scale = Vector2( 10.8, 10.8 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="pivot/sprite/Light2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="pivot/sprite/Light2D/Area2D"]
+polygon = PoolVector2Array( 84.4445, -84.4445, 0, 0, -84.4445, -84.4445, -48.8889, -115.556, 0, -120, 48.8889, -115.556 )

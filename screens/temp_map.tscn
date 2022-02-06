@@ -39,6 +39,7 @@ script = ExtResource( 54 )
 
 [node name="interact_1" parent="." instance=ExtResource( 55 )]
 position = Vector2( 379.148, 467.132 )
+main = NodePath("..")
 
 [node name="door" parent="." instance=ExtResource( 6 )]
 position = Vector2( 517.241, 362.922 )
@@ -50,5 +51,6 @@ position = Vector2( 267.073, 457.372 )
 position = Vector2( 265.453, 357.504 )
 collision_layer = 0
 patrol_paths = [ NodePath("../Navigation2D/room_1/PathFollow2D") ]
+main = NodePath("..")
 
 [connection signal="change_door" from="player" to="door" method="_on_player_change_door"]
