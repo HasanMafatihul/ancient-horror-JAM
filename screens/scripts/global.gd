@@ -11,7 +11,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 
 # Function to change scene. Use arg "quit" to quit game instead
-func goto_scene(path):
+func goto_scene(path : String):
 	if path == "quit":
 		get_tree().quit()
 		return

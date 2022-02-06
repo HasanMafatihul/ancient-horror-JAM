@@ -1,7 +1,7 @@
-extends Node
+extends Button
 
-export var path:String
-export var altkey:String
+export var path : String
+export var altkey : String
 
 func _pressed():
 	global.goto_scene(path)
