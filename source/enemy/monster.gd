@@ -25,6 +25,8 @@ onready var door_tilemap = get_node(door_tile)
 
 func _ready():
 	rng.randomize()
+	
+	door_tilemap.changeAllDoorState("close")
 
 func _process(_delta):
 	

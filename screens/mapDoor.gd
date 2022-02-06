@@ -51,9 +51,23 @@ func breakDoor(pos):
 				if(doorID == 6 and posTile.x-0 <= i and i <= posTile.x+1 and posTile.y-1 <= j and j <= posTile.y-0):
 					changeOneDoorState(Vector2(i,j))
 
-func changeOneDoorState(pos):
+func changeOneDoorState(pos : Vector2):
 	set_cell(pos.x , pos.y, 1 - get_cell(pos.x , pos.y), 
 		is_cell_x_flipped(pos.x , pos.y), # memastikan rotasi sama
 		is_cell_y_flipped(pos.x , pos.y),
 		is_cell_transposed(pos.x , pos.y))
 
+func changeAllDoorState(strategy = "reverse"):
+	var used_cells = get_used_cells()
+	for i in used_cells:
+		match strategy:
+			"reverse":
+				changeOneDoorState(i)
+			"close":
+				if get_cellv(i) == 1:
+					changeOneDoorState(i)
+			"open":
+				if get_cellv(i) == 0:
+					changeOneDoorState(i)
+	print(get_used_cells())
+	
