@@ -73,6 +73,7 @@ margin_left = -4768.0
 margin_top = -7656.0
 margin_right = 6760.0
 margin_bottom = 5304.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,7 +127,7 @@ curve = SubResource( 5 )
 
 [node name="path_2" type="PathFollow2D" parent="Navigation2D/pat_2"]
 position = Vector2( -1255.07, 1316.6 )
-rotation = -1.56726
+rotation = -1.56729
 script = ExtResource( 8 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
