@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="GIM JAM Horror"
-run/main_scene="res://screens/main_game.tscn"
+run/main_scene="res://screens/level_layout.tscn"
 config/icon="res://icon.png"
 
 [autoload]
